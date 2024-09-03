@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}{{ pokemon.name|capfirst }}{% endblock  %}
+
+{% block content %}
+  <div class="pokemon-block">
+    <section class="pokemon">
+      <img class="img-container" src="{{ pokemon.sprites.front_default }}" alt="Фото {{ pokemon.name }}">
+      <div class="info">
+        <span class="number">#{{ pokemon.id }}</span>
+        <h2 class="name">{{ pokemon.name|capfirst }}</h2>
+          <span class="height">Рост: {{ pokemon.height }}</span>
+          <span class="weight">Вес: {{ pokemon.weight }}</span>
+          <p class="type">Тип:
+            {% for type in pokemon.types %}
+              <span>{{ type.type.name }}</span>
+            {% endfor %}
+          </p>
+          <p class="ability">Способность:
+            {% for ability in pokemon.abilities %}
+              <span>{{ ability.ability.name }}</span>
+            {% endfor %}
+          </p>
+        </div>
+      </section>
+
+      <a class="link" href="{% url 'pokemon_list' %}">Назад</a>
+  </div>
+{% endblock  %}

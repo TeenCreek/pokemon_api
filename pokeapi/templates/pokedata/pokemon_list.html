@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Список покемонов{% endblock  %}
+
+{% block content %}
+  <div class="pokemon-block">
+    <ul class="pokemon-list">
+        {% for pokemon in pokemons %}
+          <li>
+            <p>
+              <a href="{% url 'pokemon_detail' pokemon.name %}">{{ pokemon.name|capfirst }}</a>
+            </p>
+          </li>
+        {% empty %}
+          <h1>Покемоны умерли 😔</h1>
+        {% endfor %}
+      </ul>
+  </div>
+{% endblock %}
